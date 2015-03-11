@@ -36,12 +36,16 @@
 	<script src="js/jquery.mobile.min.js"></script>
 	<script src="js/leaflet.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/main.js"></script>
 	<script src="phonegap.js"></script>
 	<script src="barcodescanner.js"></script>
 
 </head>
 	
 <body>
+
+<!-- homescreen -->
+<!--
 <div id="homeScreen" data-role="page">
 	<img src="imgs/SAMOCA_banner_1.png" class="banner" />
 	<div data-role="content">
@@ -62,41 +66,33 @@
 		</div>
 	</div>
 </div>
-<div id="currentExhibits" data-role="page">
-	<header data-role="header" data-position="fixed" data-id="appHeader">
-		<h1>SAMOCA</h1>
-		<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
-	</header>
+-->
+
+<div id="homeScreen" data-role="page">
+	<img src="imgs/SAMOCA_banner_1.png" class="banner" />
 	<div data-role="content">
-		<h1 class="center">Current Exhibits</h1>
-		<ul data-role="listview" data-inset="false" class="ui-nodisc-icon ui-alt-icon">
-			<li><a href="#"><img src="imgs/Westhoff_thumb.png">
-				<h2>Siobhan Westhoff</h2>
-				<p>Final Weeks</p></a>
-			</li>
-			<li><a href="#"><img src="imgs/101733188_thumb.png">
-				<h2>RED</h2>
-				<p>Eleanor Friosh</p></a>
-			</li>
-			<li><a href="#"><img src="imgs/106588354_thumb.png">
-				<h2>Imbalanced</h2>
-				<p>Simone Best, Sheldon Crane, and Elizabeth Moore</p></a>
-			</li>
-			<li><a href="#"><img src="imgs/924520721_thumb.png">
-				<h2>Morten Rand-Hendriksen</h2>
-				<p>The Untitled Collection</p></a>
-			</li>
-			<li><a href="#"><img src="imgs/Vision_thumb.png">
-				<h2>VISION</h2>
-				<p>New Works from the SAMOCA Permanent Collection</p></a>
-			</li>
-			<li><a href="#"><img src="imgs/Watching_thumb.png">
-				<h2>Paul Shellmont: Bird Watching</h2>
-				<p>Upcoming Exhibition</p></a>
-			</li>
-		</ul>
+		<div data-role="fieldcontain" class="ui-hide-label">
+			<label for="username">Enter City:</label>
+			<input type="search" name="city" id="city" value="" placeholder="City"/>
+			<button id="submit" onclick="sayHello()" name="submit">WeatherMe, Pls</button>
+		</div>
 	</div>
+
+	<div data-id="infoFooter" data-role="footer" data-position="fixed">
+		<div class="ui-grid-a center">
+			<div class="ui-block-a">
+				<a href="#aboutScreen" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-left">ABOUT</a>
+				<!--<a href="#aboutScreen" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">ABOUT</a>-->
+			</div>
+			<div class="ui-block-b">
+				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-left">SOMETHING</a>
+				<!--<a href="#mapScreen" class="ui-btn ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">Map</a>-->
+			</div>
+		</div>
+	</div>
+
 </div>
+
 
 <div id="pastExhibits" data-role="page">
 	<header data-role="header" data-position="fixed" data-id="appHeader">
@@ -118,18 +114,7 @@
 		</ul>
 	</div>
 </div>
-	
-<div id="mapScreen" data-role="page">
-	<header data-role="header" data-position="fixed" data-id="appHeader">
-		<h1>SAMOCA</h1>
-		<a href="#homeScreen" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-btn-left ui-nodisc-icon ui-alt-icon">Back</a>
-	</header>
-	<div data-role="content">
-		<h2 class="center">San Angelico Museum of Contemporary Art</h2>
-		<p class="center">123 Main Street Ventura, CA 12345<br>(800)555-1212</p>
-		<div id="map2"><img src="imgs/map.png" /></div>
-	</div>
-</div>
+
 
 <div id="discoverScreen" data-role="page">
 	<header data-role="header" data-position="fixed" data-id="appHeader">
@@ -143,6 +128,8 @@
 		<a id="qrScanBtn" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-search">Discover</a>
 	</div>
 </div>
+
+
 
 <div id="aboutScreen" data-role="page">
 	<header data-role="header" data-position="fixed" data-id="appHeader">
@@ -161,12 +148,6 @@
 		<p class="center">123 Main Street Ventura, CA 12345 (800) 555-1212</p>
 	</div>
 </div>
-	<!--
-	Admission
-	Directions
-	Parking
-	Hours
-	Volunteer
-	-->
+
 </body>
 </html>
