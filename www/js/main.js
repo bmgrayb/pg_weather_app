@@ -59,26 +59,52 @@ function display(results,city){
 
   var display = '<div id="display" name="display" class="ui-grid-d  addBorder" align="center">';
 
-  display += '<div class="ui-block-a"><b>' + results[0].time.toUpperCase() + '</b><br/><br/>' + results[0].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[0].icon +'.png"><br/>' + results[0].weather.toUpperCase() + '<br/><br/>' + results[0].desc + '</div>';
-  display += '<div class="ui-block-b"><b>' + results[1].time.toUpperCase() + '</b><br/><br/>' + results[1].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[1].icon +'.png"><br/>' + results[1].weather.toUpperCase() + '<br/><br/>' + results[1].desc + '</div>';
-  display += '<div class="ui-block-c"><b>' + results[2].time.toUpperCase() + '</b><br/><br/>' + results[2].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[2].icon +'.png"><br/>' + results[2].weather.toUpperCase() + '<br/><br/>' + results[2].desc + '</div>';
-  display += '<div class="ui-block-d"><b>' + results[3].time.toUpperCase() + '</b><br/><br/>' + results[3].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[3].icon +'.png"><br/>' + results[3].weather.toUpperCase() + '<br/><br/>' + results[3].desc + '</div>';
-  display += '<div class="ui-block-e"><b>' + results[4].time.toUpperCase() + '</b><br/><br/>' + results[4].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[4].icon +'.png"><br/>' + results[4].weather.toUpperCase() + '<br/><br/>' + results[4].desc + '</div>';
+  display += '<div class="ui-block-a"><b>' + results[0].time.toUpperCase() + '</b><br/><br/>' + results[0].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[0].icon +'.png"><br/>' + results[0].weather.toUpperCase() + '<br/><br/>' + '</div>';
+  display += '<div class="ui-block-b"><b>' + results[1].time.toUpperCase() + '</b><br/><br/>' + results[1].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[1].icon +'.png"><br/>' + results[1].weather.toUpperCase() + '<br/><br/>' + '</div>';
+  display += '<div class="ui-block-c"><b>' + results[2].time.toUpperCase() + '</b><br/><br/>' + results[2].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[2].icon +'.png"><br/>' + results[2].weather.toUpperCase() + '<br/><br/>' + '</div>';
+  display += '<div class="ui-block-d"><b>' + results[3].time.toUpperCase() + '</b><br/><br/>' + results[3].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[3].icon +'.png"><br/>' + results[3].weather.toUpperCase() + '<br/><br/>' + '</div>';
+  display += '<div class="ui-block-e"><b>' + results[4].time.toUpperCase() + '</b><br/><br/>' + results[4].temp + '&deg;<br/><img src="http://openweathermap.org/img/w/' + results[4].icon +'.png"><br/>' + results[4].weather.toUpperCase() + '<br/><br/>' + '</div>';
 
   display += '</div>';
 
   $('#display').replaceWith(display);
 }
 
-function display1(results, city){
-$('#loc').replaceWith('<h3 id="loc" name="loc">Forecast for ' + city + '</h3>');
-
-  var display = '<table align="center" id="display" name="display" data-role="table" class="ui-responsive"><tr><th>Forecast</th><th>Temperature</th></tr>';
-  display += '<tr><td>' + results[0].weather + '</td><td>' + results[0].temp + '</td></tr>';
-  display += '<tr><td>' + results[1].weather + '</td><td>' + results[1].temp + '</td></tr>';
-  display += '<tr><td>' + results[2].weather + '</td><td>' + results[2].temp + '</td></tr>';
-  display += '<tr><td>' + results[3].weather + '</td><td>' + results[3].temp + '</td></tr>';
-  display += '<tr><td>' + results[4].weather + '</td><td>' + results[4].temp + '</td></tr>';
-  display += '</table>';
-  $('#display').replaceWith(display);
+function getLocation(){
+  navigator.geolocation.getCurrentPosition(toastLocation, onError);
 }
+
+// onSuccess Geolocation
+    //
+function onSuccess(position) {
+    var element = document.getElementById('geolocation');
+    element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+                        'Longitude: '          + position.coords.longitude             + '<br />' +
+                        'Altitude: '           + position.coords.altitude              + '<br />' +
+                        'Accuracy: '           + position.coords.accuracy              + '<br />' +
+                        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+                        'Heading: '            + position.coords.heading               + '<br />' +
+                        'Speed: '              + position.coords.speed                 + '<br />' +
+                        'Timestamp: '          + position.timestamp                    + '<br />';
+}
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+
+function toastLocation(position){
+  var message = "Longitude: " + position.coords.longitude + "\n";
+  message += "Latitude: " + position.coords.latitude;
+  window.plugins.toast.showLongBottom(message,function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+}
+
+
+
+
+
+
+
+

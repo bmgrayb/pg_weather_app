@@ -24,6 +24,7 @@
 	<script src="js/main.js"></script>
 	<script src="phonegap.js"></script>
 	<script src="barcodescanner.js"></script>
+	<script src="Toast.js"></script>
 
 </head>
 	
@@ -45,7 +46,10 @@
 			<label for="username">Enter City:</label>
 			<input type="search" name="city" id="city" value="" placeholder="City"/>
 			<button id="submit" onclick="getWeather()" name="submit">WeatherMe,Pls</button>
+			<button id="location" onclick="getLocation()" name="location">FindMe,Pls</button>
 		</div>
+
+		<p id="geolocation"></p>
 	</div>
 
 	<div data-role="footer" data-id="infoFooter" data-position="fixed">
