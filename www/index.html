@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
 	<title>WeathMe,Pls</title>
 	<link rel="stylesheet"  href="css/jquery.mobile.min.css">
 	<link rel="stylesheet" href="css/index.css">
@@ -27,34 +27,42 @@
 
 <!-- homescreen -->
 <div id="homeScreen" data-role="page">
+	<div id="logoHeader" data-role="header">
+		<img src="imgs/WeatherMe,Pls-logo.png" class="banner" />
+	</div>
+	
 	<div data-role="content">
 
 		<h3 id="loc" name="loc"></h3>
 
 		<p id="display" name="display"></p>
-		<div id="logoHeader" data-role="header" data-position="fixed">
-			<img src="imgs/WeatherMe,Pls-logo.png" class="banner" />
-		</div>
 
-		<div data-role="fieldcontain" class="ui-hide-label">
+		<div data-role="fieldcontain" class="ui-hide-label" data-position="fixed">
 			<label for="username">Enter City:</label>
 			<input type="search" name="city" id="city" value="" placeholder="City"/>
 			<button id="submit" onclick="getWeather()" name="submit">WeatherMe,Pls</button>
 		</div>
 	</div>
 
-	<div data-id="infoFooter" data-role="footer" data-position="fixed">
+	<!--<div data-id="infoFooter" data-role="footer" data-position="fixed">
 		<div class="ui-grid-a center">
 			<div class="ui-block-a">
 				<a href="#aboutScreen" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-left">ABOUT</a>
-				<!--<a href="#aboutScreen" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">ABOUT</a>-->
 			</div>
 			<div class="ui-block-b">
 				<a href="http://openweathermap.org/api" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-left">RESOURCES</a>
-				<!--<a href="#mapScreen" class="ui-btn ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">Map</a>-->
 			</div>
 		</div>
-	</div>
+	</div>-->
+
+	<div data-role="footer" data-id="infoFooter" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#aboutScreen">ABOUT</a></li>
+				<li><a href="http://openweathermap.org/api">RESOURCES</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
 
 </div>
 
@@ -76,18 +84,24 @@
 		<p class="center">123 Main Street Ventura, CA 12345 (800) 555-1212</p>
 	</div>
 
-	<div data-id="infoFooter" data-role="footer" data-position="fixed">
+	<!--<div data-id="infoFooter" data-role="footer" data-position="fixed">
 		<div class="ui-grid-a center">
 			<div class="ui-block-a">
 				<a href="#homeScreen" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-left">HOME</a>
-				<!--<a href="#aboutScreen" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">ABOUT</a>-->
 			</div>
 			<div class="ui-block-b">
 				<a href="http://openweathermap.org/api" class="ui-btn ui-corner-all ui-shadow ui-icon-plus ui-btn-icon-left">RESOURCES</a>
-				<!--<a href="#mapScreen" class="ui-btn ui-corner-all ui-icon-location ui-btn-icon-notext ui-btn-inline ui-nodisc-icon ui-alt-icon">Map</a>-->
 			</div>
 		</div>
-	</div>
+	</div>-->
+	<div data-role="footer" data-id="infoFooter" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#homeScreen">HOME</a></li>
+				<li><a href="http://openweathermap.org/api">RESOURCES</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
 </div>
 
 </body>
