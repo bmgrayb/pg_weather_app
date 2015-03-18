@@ -1,12 +1,16 @@
 function getWeather(){
 		var city = $('#city').val();
-		//window.location.href = "#aboutScreen";
+    var co = $('#country').val();
+    var loc = city + "," + co;
+
+    if(city === "" || city === null) return; //alert(getLocOnNull());
+
 		$.ajax({
-		    url:'http://api.openweathermap.org/data/2.5/forecast/daily?q='+city+',us&cnt=5&mode=json',
+		    url:'http://api.openweathermap.org/data/2.5/forecast/daily?q='+loc+'&cnt=5&mode=json',
 		}).done(function(data){
 			var results = parseFeed(data,5);
 
-      display(results, city);
+      display(results, loc.toUpperCase());
 
 		});
 }
@@ -54,8 +58,8 @@ function getDayName(d){
   return weekday[d.getDay()];
 }
 
-function display(results,city){
-  $('#loc').replaceWith('<h3 id="loc" name="loc">Forecast for ' + city + '</h3>');
+function display(results,loc){
+  $('#loc').replaceWith('<h3 id="loc" name="loc">Forecast for ' + loc + '</h3>');
 
   var display = '<div id="display" name="display" class="ui-grid-d  addBorder" align="center">';
 
@@ -70,22 +74,18 @@ function display(results,city){
   $('#display').replaceWith(display);
 }
 
-function getLocation(){
-  navigator.geolocation.getCurrentPosition(toastLocation, onError);
+function getLocOnNull(){
+  var message;
+  navigator.geolocation.getCurrentPosition(getMessage, onError);
 }
 
-// onSuccess Geolocation
-    //
-function onSuccess(position) {
-    var element = document.getElementById('geolocation');
-    element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
-                        'Longitude: '          + position.coords.longitude             + '<br />' +
-                        'Altitude: '           + position.coords.altitude              + '<br />' +
-                        'Accuracy: '           + position.coords.accuracy              + '<br />' +
-                        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-                        'Heading: '            + position.coords.heading               + '<br />' +
-                        'Speed: '              + position.coords.speed                 + '<br />' +
-                        'Timestamp: '          + position.timestamp                    + '<br />';
+function getMessage(position){
+  var message = "lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;
+  return message;
+}
+
+function getLocation(){
+  navigator.geolocation.getCurrentPosition(toastLocation, onError);
 }
 
 // onError Callback receives a PositionError object

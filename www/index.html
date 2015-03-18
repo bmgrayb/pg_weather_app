@@ -45,6 +45,14 @@
 		<div data-role="fieldcontain" class="ui-hide-label" data-position="fixed">
 			<label for="username">Enter City:</label>
 			<input type="search" name="city" id="city" value="" placeholder="City"/>
+			<select name="country" id="country" data-native-menu="false">
+			   <option value="us">United States</option>
+			   <option value="ca">Canada</option>
+			   <option value="gb">United Kingdom</option>
+			   <option value="in">India</option>
+			   <option value="de">Germany</option>
+			   <option value="ar">argentina</option>
+			</select>
 			<button id="submit" onclick="getWeather()" name="submit">WeatherMe,Pls</button>
 			<button id="location" onclick="getLocation()" name="location">FindMe,Pls</button>
 		</div>
